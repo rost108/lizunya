@@ -35,6 +35,23 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
+    #stars {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .star {
+      position: absolute;
+      color: #ffd9ec;
+      animation: twinkle var(--dur) ease-in-out infinite;
+      animation-delay: var(--delay);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(0.8); }
+      50%      { opacity: 1;    transform: scale(1.2); }
+    }
     #music {
       padding: 0.85rem 1.6rem;
       font-size: 1.05rem;
@@ -51,8 +68,29 @@
   </style>
 </head>
 <body>
+  <div id="stars"></div>
   <h1>Лізуня, ти найкраща в світі, я тебе люблю ❤️</h1>
   <button id="music">💖 Увімкнути мелодію</button>
+
+  <script>
+    // Багато зірочок ✨
+    (function () {
+      const box = document.getElementById('stars');
+      const glyphs = ['✦', '✧', '⋆', '✩', '·', '✨'];
+      const count = 140;
+      let html = '';
+      for (let i = 0; i < count; i++) {
+        const top = (Math.random() * 100).toFixed(2);
+        const left = (Math.random() * 100).toFixed(2);
+        const size = (0.5 + Math.random() * 1.6).toFixed(2);
+        const dur = (1.8 + Math.random() * 3).toFixed(2);
+        const delay = (Math.random() * 4).toFixed(2);
+        const g = glyphs[i % glyphs.length];
+        html += `<span class="star" style="top:${top}%;left:${left}%;font-size:${size}rem;--dur:${dur}s;--delay:${delay}s">${g}</span>`;
+      }
+      box.innerHTML = html;
+    })();
+  </script>
 
   <script>
     // Ноти (Гц)
