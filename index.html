@@ -48,27 +48,11 @@
     }
     #music:hover { background: rgba(255, 255, 255, 0.14); }
     #music:active { transform: scale(0.96); }
-    #horse {
-      position: fixed;
-      bottom: 8%;
-      left: 0;
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      pointer-events: none;
-      animation: gallop 9s linear infinite;
-    }
-    @keyframes gallop {
-      0%   { transform: translateX(-15vw) translateY(0)     scaleX(-1); }
-      25%  { transform: translateX(20vw)  translateY(-12px) scaleX(-1); }
-      50%  { transform: translateX(55vw)  translateY(0)     scaleX(-1); }
-      75%  { transform: translateX(90vw)  translateY(-12px) scaleX(-1); }
-      100% { transform: translateX(115vw) translateY(0)     scaleX(-1); }
-    }
   </style>
 </head>
 <body>
   <h1>Лізуня, ти найкраща в світі, я тебе люблю ❤️</h1>
   <button id="music">💖 Увімкнути мелодію</button>
-  <div id="horse">🐎</div>
 
   <script>
     // Ноти (Гц)
